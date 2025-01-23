@@ -32,11 +32,12 @@ public class JwtAuthentificationFilter implements ServerAuthenticationConverter 
             try {
                 Claims claims= jwtService.validateToken(token);
                 String username = claims.getSubject();
+                String role = claims.get("role", String.class);
 
                 return Mono.just(new UsernamePasswordAuthenticationToken(
                         username,
                         null,
-                        Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))));
+                        Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+ role))));
 
             }catch (Exception e){
                 return Mono.empty();

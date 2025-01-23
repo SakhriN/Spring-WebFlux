@@ -22,6 +22,12 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestBody Map<String, String> credentials) {
         String username = credentials.get("username");
-        return jwtService.generateToken(username,Map.of("role", "ADMIN"));
+        String role;
+        if (credentials.get("role") != null) {
+            role = credentials.get("role");
+        }else{
+            role = "admin";
+        }
+        return jwtService.generateToken(username,Map.of("role", role));
     }
 }

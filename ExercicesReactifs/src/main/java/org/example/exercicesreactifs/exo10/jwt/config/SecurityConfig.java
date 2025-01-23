@@ -34,11 +34,11 @@ public class SecurityConfig {
 
         return http
                 .authorizeExchange()
-//                .pathMatchers(HttpMethod.GET, "/api/rooms","/api/rooms/**").permitAll()
-//                .pathMatchers(HttpMethod.POST, "/api/rooms").hasRole("ADMIN")
-//                .pathMatchers(HttpMethod.POST, "/api/rooms/**").hasRole("ADMIN")
-//                .pathMatchers(HttpMethod.PUT, "/api/rooms/**").hasRole("ADMIN")
-//                .pathMatchers(HttpMethod.DELETE, "/api/rooms/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.GET, "/api/rooms","/api/rooms/**").permitAll()
+                .pathMatchers(HttpMethod.POST, "/api/rooms").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.POST, "/api/rooms/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.PUT, "/api/rooms/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.DELETE, "/api/rooms/**").hasRole("ADMIN")
                 .pathMatchers("/api/auth/**").permitAll()
                 .anyExchange().permitAll()
                 .and()
