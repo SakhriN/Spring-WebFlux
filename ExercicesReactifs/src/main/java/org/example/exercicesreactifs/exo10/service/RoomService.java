@@ -23,7 +23,8 @@ public class RoomService {
     public Mono<Room> getRoomById(int id) {
         return roomRepository.findById(id);
     }
-    public Mono<Room> updateRoom(Room room) {
+    public Mono<Room> updateRoom(int id, Room room) {
+        room.setId(id);
         return roomRepository.save(room);
     }
     public Mono<Void> deleteRoomById(int id) {

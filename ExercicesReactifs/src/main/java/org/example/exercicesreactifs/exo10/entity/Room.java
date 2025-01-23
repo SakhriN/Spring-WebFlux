@@ -11,9 +11,8 @@ public class Room {
     private String description;
     private static int count = 0;
 
+public Room() {}
 
-    public Room() {}
-q
     public Room(String nom, String description) {
         this.id = count++;
         this.nom = nom;

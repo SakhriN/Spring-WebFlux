@@ -14,27 +14,27 @@ public class RoomController {
     private RoomService roomService;
 
     @GetMapping
-    public Mono<Room> addingRoom(Room room) {
-        return roomService.addRoom(room);
-    }
-
-    @PostMapping
     public Flux<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 
     @GetMapping("{id}")
-    public Mono<Room> getRoom(int id) {
+    public Mono<Room> getRoom(@PathVariable("id") int id) {
         return roomService.getRoomById(id);
     }
 
+    @PostMapping
+    public Mono<Room> addingRoom(@RequestBody Room room) {
+        return roomService.addRoom(room);
+    }
+
     @PutMapping("{id}")
-    public Mono<Room> updateRoom(@PathVariable("id")int id, Room room) {
-        return roomService.updateRoom(room);
+    public Mono<Room> updateRoom(@PathVariable("id") int id, @RequestBody Room room) {
+        return roomService.updateRoom(id,room);
     }
 
     @DeleteMapping("{id}")
-    public Mono<Void> deleteRoom(int id) {
+    public Mono<Void> deleteRoom(@PathVariable("id") int id) {
         return roomService.deleteRoomById(id);
     }
 
